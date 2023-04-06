@@ -16,4 +16,4 @@ EXPOSE 4099
 
 WORKDIR /var/www/wordpress
 
-CMD ["php", "-S", "0.0.0.0:4099"]
+CMD ["php-fpm7", "-R", "-F"]
