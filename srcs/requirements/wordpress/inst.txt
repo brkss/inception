@@ -1,3 +1,0 @@
-docker container ls
-docker exec -it <container_id> sh
-php --version

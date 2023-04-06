@@ -1,0 +1,27 @@
+2023-02-27 23:35:44 0 [Note] Starting MariaDB 10.6.12-MariaDB source revision 4c79e15cc3716f69c044d4287ad2160da8101cdc as process 80
+2023-02-27 23:35:44 0 [Note] InnoDB: The first data file './ibdata1' did not exist. A new tablespace will be created!
+2023-02-27 23:35:44 0 [Note] InnoDB: Compressed tables use zlib 1.2.12
+2023-02-27 23:35:44 0 [Note] InnoDB: Number of pools: 1
+2023-02-27 23:35:44 0 [Note] InnoDB: Using ARMv8 crc32 + pmull instructions
+2023-02-27 23:35:44 0 [Note] mariadbd: O_TMPFILE is not supported on /var/tmp (disabling future attempts)
+2023-02-27 23:35:44 0 [Note] InnoDB: Using Linux native AIO
+2023-02-27 23:35:44 0 [Note] InnoDB: Initializing buffer pool, total size = 134217728, chunk size = 134217728
+2023-02-27 23:35:44 0 [Note] InnoDB: Completed initialization of buffer pool
+2023-02-27 23:35:44 0 [Note] InnoDB: Setting file './ibdata1' size to 12 MB. Physically writing the file full; Please wait ...
+2023-02-27 23:35:44 0 [Note] InnoDB: File './ibdata1' size is now 12 MB.
+2023-02-27 23:35:44 0 [Note] InnoDB: Setting log file ./ib_logfile101 size to 100663296 bytes
+2023-02-27 23:35:44 0 [Note] InnoDB: Renaming log file ./ib_logfile101 to ./ib_logfile0
+2023-02-27 23:35:44 0 [Note] InnoDB: New log file created, LSN=10313
+2023-02-27 23:35:44 0 [Note] InnoDB: Doublewrite buffer not found: creating new
+2023-02-27 23:35:44 0 [Note] InnoDB: Doublewrite buffer created
+2023-02-27 23:35:44 0 [Note] InnoDB: 128 rollback segments are active.
+2023-02-27 23:35:44 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+2023-02-27 23:35:44 0 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+2023-02-27 23:35:44 0 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+2023-02-27 23:35:44 0 [Note] InnoDB: 10.6.12 started; log sequence number 0; transaction id 3
+2023-02-27 23:35:44 0 [Note] Plugin 'FEEDBACK' is disabled.
+2023-02-27 23:35:44 0 [ERROR] Could not open mysql.plugin table: "Table 'mysql.plugin' doesn't exist". Some plugins may be not loaded
+2023-02-27 23:35:44 0 [ERROR] Can't open and lock privilege tables: Table 'mysql.servers' doesn't exist
+2023-02-27 23:35:44 0 [ERROR] Fatal error: Can't open and lock privilege tables: Table 'mysql.db' doesn't exist
+2023-02-27 23:35:44 0 [ERROR] Aborting
+Warning: Memory not freed: 280
