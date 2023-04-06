@@ -1,0 +1,14 @@
+version: "3.0"
+services:
+  wordpress:
+    build: ./requirements/wordpress/
+    depends_on:
+      - mariadb
+    ports:
+      - 4099:4099
+    restart: unless-stopped
+  mariadb:
+    build: ./requirements/mariadb/
+    ports:
+      - 3099:3306
+    restart: always

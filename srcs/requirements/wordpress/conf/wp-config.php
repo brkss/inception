@@ -47,7 +47,7 @@ define('NONCE_SALT',       'Q!G2)qR(Gdzy(7>m,+M+]Geac%R9+VAIW0EoslA+C)<> w=d9`py
 $table_prefix = 'wp_';
 
 /** For developers: WordPress debugging mode. */
-define( 'WP_DEBUG', false );
+define( 'WP_DEBUG', true );
 
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
