@@ -7,8 +7,18 @@ services:
     ports:
       - 4099:4099
     restart: unless-stopped
+    volumes:
+      - ./data/wordpress:/var/www/wordpress
   mariadb:
     build: ./requirements/mariadb/
     ports:
       - 3099:3306
     restart: always
+  nginx:
+    build: ./requirements/nginx
+    ports:
+      - 8080:80
+    restart: always
+    volumes:
+      - ./data/wordpress:/var/www/wordpress
+
