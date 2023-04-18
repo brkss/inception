@@ -8,31 +8,40 @@ services:
       - 9000:9000
     restart: unless-stopped
     volumes:
-      - wordpress:/var/www/wordpress
+      - defvol:/var/www/wordpress
+    networks:
+      - defnet
     environment:
         - MSQL_USER=${MSQL_USER}
         - MSQL_PASS=${MSQL_PASS}
         - MSQL_DB=${MSQL_DB}
   mariadb:
     build: ./requirements/mariadb/
+    networks:
+      - defnet
     ports:
       - 3306:3306
     restart: always
   nginx:
     build: ./requirements/nginx
     ports:
-      - 8080:80
+      - 8080:8080
     restart: always
+    networks:
+      - defnet
     depends_on:
       - wordpress
     volumes:
-      - wordpress:/var/www/wordpress
+      - defvol:/var/www/wordpress
+
+networks:
+  defnet:
+    driver: bridge
 
 volumes :
-  wordpress:
+  defvol:
     driver: local
     driver_opts:
       type: none
-      device: /home/debian/data/wordpress
+      device: /tmp/wordpress
       o: bind
-

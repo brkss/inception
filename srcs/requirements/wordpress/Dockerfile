@@ -20,11 +20,11 @@ WORKDIR /var/www/wordpress
 
 RUN ls
 
-EXPOSE 9001
+EXPOSE 9000
 
-#ENTRYPOINT ["sh", "/run.sh"]
+ENTRYPOINT ["sh", "/run.sh"]
 
-CMD ["php", "-S", "127.0.0.1:9001"]
+#CMD ["php", "-S", "0.0.0.0:9001"]
 
-#CMD ["php-fpm7.3", "-R", "-F"]
+CMD ["php-fpm7.3", "-R", "-F"]
 
