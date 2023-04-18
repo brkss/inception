@@ -5,20 +5,34 @@ services:
     depends_on:
       - mariadb
     ports:
-      - 4099:4099
+      - 9000:9000
     restart: unless-stopped
     volumes:
-      - ./data/wordpress:/var/www/wordpress
+      - wordpress:/var/www/wordpress
+    environment:
+        - MSQL_USER=${MSQL_USER}
+        - MSQL_PASS=${MSQL_PASS}
+        - MSQL_DB=${MSQL_DB}
   mariadb:
     build: ./requirements/mariadb/
     ports:
-      - 3099:3306
+      - 3306:3306
     restart: always
   nginx:
     build: ./requirements/nginx
     ports:
       - 8080:80
     restart: always
+    depends_on:
+      - wordpress
     volumes:
-      - ./data/wordpress:/var/www/wordpress
+      - wordpress:/var/www/wordpress
+
+volumes :
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/debian/data/wordpress
+      o: bind
 

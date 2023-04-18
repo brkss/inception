@@ -1,19 +1,30 @@
-FROM alpine:3.15
+FROM debian:buster
 
-#WORKDIR /app 
+RUN apt-get update && apt-get install -y php7.3 \
+	php7.3-fpm php7.3-mysql mariadb-client \
+	nginx wget curl
+    
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
-RUN apk add --no-cache php7 php7-fpm php7-opcache wget unzip php-mysqli mariadb-client curl php7-json
+RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
-RUN wget https://wordpress.org/latest.zip 
+COPY ./conf/run.sh /run.sh
 
-RUN unzip latest.zip -d /var/www/
+COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/
 
-COPY ./conf/www.conf /etc/php/7/fpm/pool.d
+RUN chmod +x run.sh
 
-COPY ./conf /var/www/wordpress
-
-EXPOSE 4099
+RUN mkdir /run/php/
 
 WORKDIR /var/www/wordpress
 
-CMD ["php-fpm7", "-R", "-F"]
+RUN ls
+
+EXPOSE 9001
+
+#ENTRYPOINT ["sh", "/run.sh"]
+
+CMD ["php", "-S", "127.0.0.1:9001"]
+
+#CMD ["php-fpm7.3", "-R", "-F"]
+

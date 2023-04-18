@@ -1,8 +1,8 @@
-FROM alpine:3.15
+FROM debian:buster
 
-RUN apk update && apk add --no-cache nginx 
+RUN apt-get -y update && apt-get -y upgrade && apt install -y nginx
 
-COPY ./conf /etc/nginx/default.conf
+COPY ./conf/default.conf /etc/nginx/conf.d/
 
 EXPOSE 80
 
