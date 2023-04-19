@@ -1,4 +1,4 @@
-version: "3.0"
+version: "3"
 services:
   wordpress:
     build: ./requirements/wordpress/
@@ -11,10 +11,18 @@ services:
       - wp:/var/www/wordpress
     networks:
       - defnet
+    env_file:
+        - .env
     environment:
         - MSQL_USER=${MSQL_USER}
         - MSQL_PASS=${MSQL_PASS}
         - MSQL_DB=${MSQL_DB}
+        - USER_U=${USER_U}
+        - ADMIN_U=${ADMIN_U}
+        - USER_P=${USER_P}
+        - ADMIN_P=${ADMIN_P}
+        - DOMAIN=${DOMAIN}
+        - ADMIN_E=${ADMIN_E}
   mariadb:
     build: ./requirements/mariadb/
     networks:
