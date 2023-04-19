@@ -6,9 +6,9 @@ services:
       - mariadb
     ports:
       - 9000:9000
-    restart: unless-stopped
+    restart: always
     volumes:
-      - defvol:/var/www/wordpress
+      - wp:/var/www/wordpress
     networks:
       - defnet
     environment:
@@ -21,27 +21,35 @@ services:
       - defnet
     ports:
       - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
     restart: always
   nginx:
     build: ./requirements/nginx
     ports:
-      - 8080:8080
+      - 443:443
     restart: always
     networks:
       - defnet
     depends_on:
       - wordpress
     volumes:
-      - defvol:/var/www/wordpress
+      - wp:/var/www/wordpress
 
 networks:
   defnet:
     driver: bridge
 
 volumes :
-  defvol:
+  wp:
     driver: local
     driver_opts:
       type: none
-      device: /tmp/wordpress
+      device: /home/debian/data/wordpress
+      o: bind
+  db:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/debian/data/mariadb
       o: bind
