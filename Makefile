@@ -1,7 +1,7 @@
 
 
 DOCKER_COMPOSE_FILE=./srcs/docker-compose.yml
-USER=debian
+USER=bberkass
 
 all: up
 
